@@ -381,6 +381,10 @@ class SeleniumBasePage(object):
         element = self.wait_for_element_to_be_visible(element_locator)
         element.send_keys(keys)
 
+    def clear_and_send_keys(self, keys, element_locator):
+        self.clear(element_locator)
+        self.send_keys(keys, element_locator)
+
     def click(self, element_locator, timeout=ACCEPTABLE_LOADING_TIME):
         start_time = time.time()
 
@@ -620,3 +624,4 @@ class SeleniumBasePage(object):
     def send_delete_key(self):
         actions = ActionChains(self.driver)
         actions.send_keys(Keys.DELETE).perform()
+
